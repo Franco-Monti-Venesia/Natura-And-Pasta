@@ -73,3 +73,14 @@ Los favicons definitivos están en `public/` y se sirven desde la raíz del siti
 - `public/apple-touch-icon.png`
 
 No es necesario mantener copias adicionales en la raíz del proyecto. Vite publica automáticamente los archivos de la carpeta `public`.
+
+## Correcciones responsive (noviembre 2026)
+- En teléfonos (hasta 600 px) se ocultan las fotografías del Hero y queda como protagonista el texto.
+- El adorno de la sección “La propuesta” usa un SVG para evitar que iOS lo convierta en un emoji verde.
+- El crédito “Desarrollado por Franco Venesia” apunta a `https://francovenesia.vercel.app/`.
+- Las tarjetas de productos tienen imágenes móviles cuadradas, de igual tamaño y sin recorte agresivo; en escritorio conservan sus imágenes de mayor formato.
+- La sección “Elegir distinto. Disfrutar siempre.” usa una toma vertical en teléfonos para reducir el zoom del fondo.
+- En teléfonos se muestran cuatro publicaciones en la galería de Instagram; en pantallas grandes siguen apareciendo cinco.
+
+## Publicar actualizaciones en GitHub y Vercel
+No hace falta borrar el repositorio. Copiá el contenido de una nueva versión del proyecto sobre la carpeta local que ya tiene tu repositorio Git, sin borrar la carpeta oculta `.git`. Después ejecutá `git add .`, `git commit -m "Ajustes responsive para móviles"` y `git push`. Vercel desplegará automáticamente el nuevo commit si el proyecto sigue conectado a ese repositorio.

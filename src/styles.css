@@ -153,8 +153,9 @@ html::-webkit-scrollbar-corner { background: var(--paper-deep); }
 .products-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 31px; }
 .product-card { display: grid; grid-template-columns: 1.02fr .98fr; min-height: 360px; background: var(--paper); }
 .product-image-wrap { min-height: 360px; position: relative; overflow: hidden; background: var(--sand); }
-.product-image-wrap > img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; transition: transform .8s; }
-.product-card:hover .product-image-wrap > img { transform: scale(1.045); }
+.product-image-wrap > picture { position: absolute; inset: 0; display: block; width: 100%; height: 100%; }
+.product-image-wrap > picture > img { width: 100%; height: 100%; min-height: 360px; object-fit: cover; transition: transform .8s; }
+.product-card:hover .product-image-wrap > picture > img { transform: scale(1.045); }
 .product-index { position: absolute; left: 17px; top: 17px; display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid rgba(255,255,255,.75); border-radius: 50%; color: white; font-family: var(--serif); font-size: 12px; }
 .product-tag { position: absolute; bottom: 17px; left: 17px; padding: 8px 12px; background: rgba(247,244,239,.91); color: var(--ink); font-size: 8px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
 .product-copy { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 29px 24px; }
@@ -474,4 +475,56 @@ body { font-size: 16px; line-height: 1.65; }
 :focus-visible { outline: 2px solid var(--taupe-dark); outline-offset: 4px; }
 @media (max-width: 420px) {
   .instagram-gallery .insta-tile:last-child { width: calc(65% - 5px); }
+}
+
+
+/* Ajustes de experiencia móvil solicitados para la versión responsive */
+.almond-doodle-icon {
+  display: block;
+  width: 42px;
+  height: 42px;
+  color: var(--taupe-dark);
+}
+
+@media (max-width: 600px) {
+  /* En móviles, la portada prioriza el mensaje y elimina las dos fotos. */
+  .hero-visual { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 0; }
+  .hero { padding-bottom: 92px; }
+
+  /* Las miniaturas de productos mantienen el mismo marco y no se recortan con zoom. */
+  .product-image-wrap {
+    height: 260px;
+    min-height: 260px;
+  }
+  .product-image-wrap > picture > img {
+    min-height: 0;
+    object-fit: contain;
+    background: var(--paper-deep);
+  }
+
+  /* En pantallas pequeñas mostramos cuatro publicaciones, en una grilla 2 x 2. */
+  .instagram-gallery .instagram-mobile-hide { display: none !important; }
+  .instagram-gallery .insta-tile:last-child {
+    grid-column: auto;
+    width: auto;
+    justify-self: stretch;
+  }
+}
+
+@media (max-width: 600px) {
+  /* En móviles se usa una toma vertical para reducir el recorte de la imagen de fondo. */
+  .manifesto-section { min-height: 520px; }
+  .manifesto-image img { object-fit: cover; object-position: center; }
+}
+
+@media (max-width: 420px) {
+  .product-image-wrap {
+    height: 270px;
+    min-height: 270px;
+  }
+  .product-image-wrap > picture > img {
+    object-fit: contain;
+    padding: 0;
+  }
 }

@@ -30,6 +30,7 @@ const products = [
     name: 'Tallarines\nde almendras',
     description: 'Tallarines frescos con harina de almendras como ingrediente principal. Una propuesta diferente para disfrutar en la mesa.',
     image: '/images/instagram-tallarines-detalle.webp',
+    mobileImage: '/images/producto-almendras-mobile.webp',
     imageAlt: 'Tallarines frescos de Natura & Pasta vistos de cerca',
     tone: 'almond',
   },
@@ -38,8 +39,9 @@ const products = [
     eyebrow: 'SALVADO DE TRIGO',
     name: 'Tallarines\nintegrales',
     description: 'Tallarines frescos elaborados con salvado de trigo, para quienes disfrutan el sabor y la textura de lo integral.',
-    image: '/images/instagram-ingredientes-huevos.webp',
-    imageAlt: 'Harina y huevos utilizados en la elaboración de las pastas',
+    image: '/images/instagram-tallarines-envasados.webp',
+    mobileImage: '/images/producto-integrales-mobile.webp',
+    imageAlt: 'Tallarines frescos de Natura & Pasta preparados para su venta',
     tone: 'wholegrain',
   },
 ];
@@ -139,7 +141,10 @@ function ProductCard({ product }) {
   return (
     <article className={`product-card ${product.tone}`} data-reveal>
       <div className="product-image-wrap">
-        <img src={product.image} alt={product.imageAlt} loading="lazy" />
+        <picture>
+          <source media="(max-width: 840px)" srcSet={product.mobileImage} />
+          <img src={product.image} alt={product.imageAlt} loading="lazy" />
+        </picture>
         <span className="product-index">{product.number}</span>
         <span className="product-tag">Pasta fresca</span>
       </div>
@@ -197,7 +202,11 @@ function App() {
             <div className="intro-art" data-reveal>
               <div className="intro-photo"><img src="/images/propuesta-marca.webp" alt="Etiquetas e identidad visual de Natura & Pasta" loading="lazy" /></div>
               <div className="intro-art-caption"><span>01 / NUESTRA ESENCIA</span><span>Simple, rica y auténtica.</span></div>
-              <div className="almond-doodle" aria-hidden="true">✳</div>
+              <div className="almond-doodle" aria-hidden="true">
+                <svg className="almond-doodle-icon" viewBox="0 0 64 64" fill="none">
+                  <path d="M32 7v50M7 32h50M14.3 14.3l35.4 35.4M49.7 14.3 14.3 49.7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+                </svg>
+              </div>
             </div>
             <div className="intro-copy">
               <SectionHeading kicker="NUESTRA PROPUESTA" title={<>El placer de comer<br /><em>bien y rico.</em></>} />
@@ -243,7 +252,10 @@ function App() {
         </section>
 
         <section className="manifesto-section">
-          <div className="manifesto-image"><img src="/images/manifesto-tallarines-frescos.webp" alt="Tallarines frescos de Natura & Pasta en sus envases de 250 gramos" loading="lazy" /></div>
+          <picture className="manifesto-image">
+            <source media="(max-width: 600px)" srcSet="/images/hero-principal.webp" />
+            <img src="/images/manifesto-tallarines-frescos.webp" alt="Tallarines frescos de Natura & Pasta en sus envases de 250 gramos" loading="lazy" />
+          </picture>
           <div className="manifesto-overlay" />
           <div className="manifesto-content" data-reveal>
             <span className="eyebrow light-eyebrow"><span /> NATURA & PASTA</span>
@@ -299,7 +311,7 @@ function App() {
                 <img src="/images/instagram-tallarines-detalle.webp" alt="Tallarines frescos espolvoreados con harina" loading="lazy" />
                 <span><Instagram size={20} /></span>
               </a>
-              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="insta-tile" aria-label="Ver publicaciones de Natura & Pasta en Instagram">
+              <a href={INSTAGRAM_URL} target="_blank" rel="noreferrer" className="insta-tile instagram-mobile-hide" aria-label="Ver publicaciones de Natura & Pasta en Instagram">
                 <img src="/images/instagram-masa-integral.webp" alt="Masa y harina durante la preparación de pastas integrales" loading="lazy" />
                 <span><Instagram size={20} /></span>
               </a>
@@ -329,7 +341,7 @@ function App() {
         <div className="container footer-bottom">
           <span>© {new Date().getFullYear()} Natura & Pasta. Todos los derechos reservados.</span>
           <span>Una línea de <strong>Gerardino Pastas</strong></span>
-          <a className="developer-credit" href="https://franco-venesia-portafolio.vercel.app/" target="_blank" rel="noreferrer">Desarrollado por <strong>Franco Venesia</strong></a>
+          <a className="developer-credit" href="https://francovenesia.vercel.app/" target="_blank" rel="noreferrer">Desarrollado por <strong>Franco Venesia</strong></a>
           <a href="#inicio">Volver arriba ↑</a>
         </div>
         <div className="footer-note container">Presentación de 250 g · Sin conservantes. Información sobre gluten: estos productos no son libres de gluten ni aptos para personas celíacas. En el establecimiento también se manipula harina de trigo.</div>
