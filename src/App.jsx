@@ -291,7 +291,7 @@ function App() {
         <section className="instagram-section section-pad" id="instagram">
           <div className="container instagram-wrap">
             <div className="instagram-top" data-reveal>
-              <div><span className="eyebrow"><span /> SEGUINOS DE CERCA</span><h2>La pasta también<br /><em>se disfruta con los ojos.</em></h2></div>
+              <div><span className="eyebrow"><span /> SEGUINOS DE CERCA</span><h2>Un poquito más de Natura.<br /><em>Descubrí más en nuestro Instagram.</em></h2></div>
               <a className="instagram-handle" href={INSTAGRAM_URL} target="_blank" rel="noreferrer"><Instagram size={19} /><span>@natura.andpasta</span><ArrowUpRight size={16} /></a>
             </div>
             <div className="instagram-gallery" data-reveal>
